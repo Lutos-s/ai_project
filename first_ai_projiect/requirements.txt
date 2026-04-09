@@ -1,0 +1,5 @@
+# 核心 AI / LLM 依赖
+openai>=1.0.0
+# 基础工具
+python-dotenv>=1.0.0       # 用于加载环境变量（API_KEY）
+requests>=2.31.0           # HTTP 请求
