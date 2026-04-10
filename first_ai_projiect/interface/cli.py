@@ -8,18 +8,26 @@ from app.tools.rewrite import rewrite
 from app.tools.keywords import keywords
 import streamlit as st
 st.title("AI文本总结工具")
-text = st.text_area("请输入文本")
+st.caption("支持总结 / 翻译 / 改写 / 关键词提取")
+col1 , col2 = st.columns(2)
+with col1:
+    text = st.text_area("请输入文本")
 option = st.selectbox(
     "选择功能",
     ["总结","翻译","改写","关键词"]
 )
 if st.button("执行"):
     if option == "总结":
-        reslut = summarize(text)
+        with st.spinner("AI思考中..."):
+            reslut = summarize(text)
     if option == "翻译":
-        reslut = translate(text)
+        with st.spinner("AI思考中..."):
+            reslut = translate(text)
     if option == "关键词":
-        reslut = keywords(text)
+        with st.spinner("AI思考中..."):
+            reslut = keywords(text)
     if option == "改写":
-        reslut = rewrite(text)
-    st.write(reslut)
+        with st.spinner("AI思考中..."):
+            reslut = rewrite(text)
+    with col2:
+        st.write(f"输出区域\n{reslut}")
